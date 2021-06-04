@@ -96,18 +96,20 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <QtRcc Include="Biomorph.qrc" />
-    <QtUic Include="Biomorph.ui" />
-    <QtMoc Include="Biomorph.h" />
+    <ClInclude Include="MyWindow.h" />
     <ClCompile Include="Biomorph.cpp" />
+    <ClCompile Include="BiomorphWidget.cpp" />
+    <ClCompile Include="MyWindow.cpp" />
     <ClCompile Include="main.cpp" />
     <ClInclude Include="Define.h" />
+    <ClInclude Include="Biomorph.h" />
+    <QtMoc Include="BiomorphWidget.h" />
     <ClInclude Include="Segment.h" />
     <ClInclude Include="stdafx.h" />
     <ClCompile Include="Segment.cpp" />
-    <ClCompile Include="stdafx.cpp">
-      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'">Create</PrecompiledHeader>
-      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)' == 'Release|x64'">Create</PrecompiledHeader>
-    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <QtUic Include="ui_Biomorph.ui" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Condition="Exists('$(QtMsBuild)\qt.targets')">

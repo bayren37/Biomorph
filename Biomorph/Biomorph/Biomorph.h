@@ -1,15 +1,25 @@
 #pragma once
+#include "Define.h"
 
-#include <QtWidgets/QMainWindow>
-#include "ui_Biomorph.h"
+namespace bm {
 
-class Biomorph : public QMainWindow
-{
-    Q_OBJECT
+	class Biomorph
+	{
+	public:
+		Biomorph();
+		~Biomorph() = default;
+		std::shared_ptr<Biomorph> makeChild(Biomorph& mate);
+		const vi& genes();
+		const Color& colors();
+		const bool Biomorph::mutant();
 
-public:
-    Biomorph(QWidget *parent = Q_NULLPTR);
+	private:
+		vi genes_ = vi(10);
+		Color color_ = { 0,0,0 };
 
-private:
-    Ui::BiomorphClass ui;
-};
+		static const double MUTANT_RATIO;
+		//Rect rect_;
+		//std::vector<Segment> segments_;
+	};
+}
+

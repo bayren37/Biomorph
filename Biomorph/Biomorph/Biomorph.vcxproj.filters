@@ -26,21 +26,12 @@
     <QtRcc Include="Biomorph.qrc">
       <Filter>Resource Files</Filter>
     </QtRcc>
-    <QtUic Include="Biomorph.ui">
-      <Filter>Form Files</Filter>
-    </QtUic>
-    <QtMoc Include="Biomorph.h">
-      <Filter>Header Files</Filter>
-    </QtMoc>
-    <ClCompile Include="Biomorph.cpp">
+    <ClCompile Include="MyWindow.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClInclude Include="stdafx.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClCompile Include="stdafx.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -49,10 +40,35 @@
     <ClCompile Include="Segment.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Biomorph.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="BiomorphWidget.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Segment.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="Define.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Biomorph.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="MyWindow.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <QtMoc Include="BiomorphWidget.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+  </ItemGroup>
+  <ItemGroup>
+    <QtUic Include="ui_Biomorph.ui">
+      <Filter>Form Files</Filter>
+    </QtUic>
   </ItemGroup>
 </Project>

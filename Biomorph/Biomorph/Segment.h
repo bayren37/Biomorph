@@ -1,5 +1,6 @@
 #pragma once
 #include "stdafx.h"
+#include "Define.h"
 
 namespace bm {
 
@@ -8,21 +9,26 @@ namespace bm {
 	public:
 		Segment();
 		~Segment() = default;
-		
+
+		void initialize();
 		void add(int x1, int x2, int y1, int y2);
+		pii dim();
+		void transfrom(unsigned int size, pii pos);
+
 
 	private:
-		std::vector<int> x1;
-		std::vector<int> x2;
-		std::vector<int> y1;
-		std::vector<int> y2;
-		
-		int index;
-		int xMax;
-		int xMin;
-		int yMax;
-		int yMin;
+		vi x1_ = {};
+		vi x2_ = {};
+		vi y1_ = {};
+		vi y2_ = {};
 
-	}
+		int index_ = 0;
+		int xMax_ = 0;
+		int xMin_ = 0;
+		int yMax_ = 0;
+		int yMin_ = 0;
+
+		vvi cache_;
+	};
 }
 
