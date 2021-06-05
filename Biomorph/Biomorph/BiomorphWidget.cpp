@@ -1,5 +1,6 @@
 #pragma once
 #include "BiomorphWidget.h"
+#include "Biomorph.h"
 
 #include <QPainter>
 
@@ -7,9 +8,22 @@ namespace bm {
 
 	BiomorphWidget::BiomorphWidget(QWidget* parent) : QPushButton(parent)
 	{
+		biomorph_ = std::make_shared<Biomorph>();
 		initialize();
+
 		setSizePolicy(QSizePolicy::Policy::MinimumExpanding, QSizePolicy::Policy::MinimumExpanding);
-		setStyleSheet("QPushButton{background:transparent;}");
+		setStyleSheet("QPushButton{ background-color: rgba(0, 0, 0, 100); border: 1px solid black;}");
+	}
+
+	void BiomorphWidget::nextGeneration(std::shared_ptr<Biomorph> mate)
+	{
+		biomorph_ = biomorph_->makeChild(*mate);
+		initialize();
+	}
+
+	std::shared_ptr<Biomorph> BiomorphWidget::biomorph()
+	{
+		return biomorph_;
 	}
 
 	void BiomorphWidget::initialize()
@@ -32,30 +46,32 @@ namespace bm {
 		dy_[0] = dy_[4];
 		dy_[1] = dy_[3];
 		dy_[7] = dy_[5];
+
+		repaint();
 	}
 
-	void BiomorphWidget::draw(int i, int j, QPainter* painter)
+	void BiomorphWidget::draw(int originX, int originY, QPainter* painter)
 	{
-		tree(i / 2, j, order_, 2, painter);
+		tree(originX, originY, order_, 2, painter);
 	}
 
-	void BiomorphWidget::tree(int i, int j, int k, int l, QPainter* painter)
+	void BiomorphWidget::tree(int x, int y, int order, int direction, QPainter* painter)
 	{
-		if (l < 0)
-			l += 8;
+		if (direction < 0)
+			direction += 8;
 
-		if (l >= 8)
-			l -= 8;
+		if (direction > 7)
+			direction -= 8;
 
-		int i1 = i + k * dx_[l];
-		int j1 = j - k * dy_[l];
+		int xto = x + order * dx_[direction];
+		int yto = y - order * dy_[direction];
 
-		painter->drawLine(i, j, i1, j1);
+		painter->drawLine(x, y, xto, yto);
 
-		if (k > 0)
+		if (order > 0)
 		{
-			tree(i1, j1, k - 1, l - 1, painter);
-			tree(i1, j1, k - 1, l + 1, painter);
+			tree(xto, yto, --order, --direction, painter);
+			tree(xto, yto, --order, ++direction, painter);
 		}
 	}
 
@@ -63,8 +79,9 @@ namespace bm {
 	{
 		auto painter = new QPainter;
 		painter->begin(this);
-		painter->setPen(QPen(Qt::black, 1));
-		draw(width(), height() / 2, painter);
+
+		painter->setPen(QPen(QColor(biomorph_->colors().r, biomorph_->colors().g, biomorph_->colors().b), 2));
+		draw(width()/2, 2*height()/3, painter);
 		painter->end();
 
 		__super::paintEvent(event);

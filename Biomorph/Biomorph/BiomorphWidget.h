@@ -1,10 +1,11 @@
 #pragma once
 
 #include "stdafx.h"
-#include "Biomorph.h"
 #include <qpushbutton.h>
 
 namespace bm {
+
+	class Biomorph;
 
 	class BiomorphWidget : public QPushButton
 	{
@@ -12,6 +13,10 @@ namespace bm {
 	public:
 		BiomorphWidget(QWidget* parent = nullptr);
 		~BiomorphWidget() = default;
+
+	public:
+		std::shared_ptr<Biomorph> biomorph();
+		void nextGeneration(std::shared_ptr<Biomorph> mate);
 
 	private:
 		void initialize();
@@ -22,7 +27,7 @@ namespace bm {
 		void paintEvent(QPaintEvent* event);
 
 	private:
-		std::shared_ptr<Biomorph> biomorph_ = std::make_shared<Biomorph>();
+		std::shared_ptr<Biomorph> biomorph_;
 
 		int order_ = -1;
 		vi dx_ = vi(8);

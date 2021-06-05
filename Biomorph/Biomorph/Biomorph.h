@@ -11,7 +11,7 @@ namespace bm {
 		std::shared_ptr<Biomorph> makeChild(Biomorph& mate);
 		const vi& genes();
 		const Color& colors();
-		const bool Biomorph::mutant();
+		const bool mutant();
 
 	private:
 		vi genes_ = vi(10);

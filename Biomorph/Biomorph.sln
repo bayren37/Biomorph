@@ -5,6 +5,8 @@ VisualStudioVersion = 16.0.31313.79
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Biomorph", "Biomorph\Biomorph.vcxproj", "{F06E63D2-934B-4AAD-8696-906BA4FE2DC4}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Cell", "Cell\Cell.vcxproj", "{E42BB336-40B8-4B36-8A49-B06E7C83E462}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64
@@ -15,6 +17,10 @@ Global
 		{F06E63D2-934B-4AAD-8696-906BA4FE2DC4}.Debug|x64.Build.0 = Debug|x64
 		{F06E63D2-934B-4AAD-8696-906BA4FE2DC4}.Release|x64.ActiveCfg = Release|x64
 		{F06E63D2-934B-4AAD-8696-906BA4FE2DC4}.Release|x64.Build.0 = Release|x64
+		{E42BB336-40B8-4B36-8A49-B06E7C83E462}.Debug|x64.ActiveCfg = Debug|x64
+		{E42BB336-40B8-4B36-8A49-B06E7C83E462}.Debug|x64.Build.0 = Debug|x64
+		{E42BB336-40B8-4B36-8A49-B06E7C83E462}.Release|x64.ActiveCfg = Release|x64
+		{E42BB336-40B8-4B36-8A49-B06E7C83E462}.Release|x64.Build.0 = Release|x64
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

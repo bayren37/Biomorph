@@ -4,14 +4,18 @@
 
 namespace bm {
 
-    const double Biomorph::MUTANT_RATIO = 0.1;
+    const double Biomorph::MUTANT_RATIO = 0.15;
 
 	Biomorph::Biomorph()	
 	{
 		for (auto& gene : genes_)
-			gene = global::rndi(5);
+			gene = global::rndi(9);
 
-		genes_[9] = global::rndi(5);
+        color_.r = global::rndi(255);
+        color_.g = global::rndi(255);
+        color_.b = global::rndi(255);
+        
+        genes_[9] = global::rndi(3);        
 	}
 
     std::shared_ptr<Biomorph> Biomorph::makeChild(Biomorph& mate)
@@ -27,17 +31,20 @@ namespace bm {
             else
             {
                 child->genes_[i] = mate.genes_[i];
-
             }
 
-            if (mutant())
-                child->genes_[i] += global::rndi(-2, 2);
-        }
+			if (mutant())
+				child->genes_[i] += global::rndi(-2, 2);
+		}
 
-        return child;
-    }
+		child->color_.r = 0.5 * (this->colors().r + mate.colors().r);
+		child->color_.g = 0.5 * (this->colors().g + mate.colors().g);
+		child->color_.b = 0.5 * (this->colors().b + mate.colors().b);
 
-    const vi& Biomorph::genes()
+		return child;
+	}
+
+	const vi& Biomorph::genes()
     {
         return genes_;
     }

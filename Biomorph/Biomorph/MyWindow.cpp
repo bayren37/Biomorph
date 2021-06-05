@@ -5,6 +5,7 @@
 #include <QLayout>
 #include <QWidget>
 #include <QPainter>
+#include <QAbstractButton>
 
 namespace ui {
 
@@ -15,12 +16,13 @@ namespace ui {
 
     CentralWidget::CentralWidget(QWidget* parent) : QWidget(parent)
     {
+        BiomorphWidgets_ = new QButtonGroup;
+        connect(BiomorphWidgets_, &QButtonGroup::idClicked, this, &CentralWidget::buttonClicked);
         auto layout = new QHBoxLayout;
         auto top = new QHBoxLayout;
         {
 
         }
-
 
         auto bottom = new QHBoxLayout;
         {
@@ -32,7 +34,6 @@ namespace ui {
                 {
                     auto biomorphWidget = new bm::BiomorphWidget();
 					BiomorphWidgets_->addButton(biomorphWidget, i + j);
-                    connect(biomorphWidget, abstractbu)
 					grid->addWidget(biomorphWidget, i, j);
                 }
             }
@@ -41,5 +42,20 @@ namespace ui {
 
         layout->addLayout(bottom);
         setLayout(layout);
+    }
+    
+    void CentralWidget::buttonClicked(int id)
+    {
+        auto button = BiomorphWidgets_->button(id);
+        auto parent = dynamic_cast<bm::BiomorphWidget*>(button);
+
+        if (parent == nullptr)
+            return;
+
+        for (auto& other : BiomorphWidgets_->buttons())
+        {
+            auto otherParent = dynamic_cast<bm::BiomorphWidget*>(other);
+            otherParent->nextGeneration(parent->biomorph());
+        }
     }
 }

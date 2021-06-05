@@ -23,52 +23,31 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <QtRcc Include="Biomorph.qrc">
+    <QtRcc Include="Microbe.qrc">
       <Filter>Resource Files</Filter>
     </QtRcc>
-    <ClCompile Include="MyWindow.cpp">
+    <QtUic Include="Microbe.ui">
+      <Filter>Form Files</Filter>
+    </QtUic>
+    <QtMoc Include="Microbe.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <ClCompile Include="Microbe.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ResourceCompile Include="$pro_name$.rc">
+    </ResourceCompile>
+    <None Include="$pro_name$.ico">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="$pro_name$.def">
+      <Filter>Resource Files</Filter>
+    </None>
     <ClInclude Include="stdafx.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-  </ItemGroup>
-  <ItemGroup>
-    <ClCompile Include="main.cpp">
+    <ClCompile Include="stdafx.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Segment.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Biomorph.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="BiomorphWidget.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-  </ItemGroup>
-  <ItemGroup>
-    <ClInclude Include="Segment.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Define.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Biomorph.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-  </ItemGroup>
-  <ItemGroup>
-    <QtMoc Include="BiomorphWidget.h">
-      <Filter>Header Files</Filter>
-    </QtMoc>
-    <QtMoc Include="MyWindow.h">
-      <Filter>Header Files</Filter>
-    </QtMoc>
-  </ItemGroup>
-  <ItemGroup>
-    <QtUic Include="ui_Biomorph.ui">
-      <Filter>Form Files</Filter>
-    </QtUic>
   </ItemGroup>
 </Project>
